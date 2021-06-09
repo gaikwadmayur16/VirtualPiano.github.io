@@ -1,0 +1,440 @@
+<!--Name: Mayur Nitin Gaikwad
+Batch: May 2021
+Email: gaikwadmayurmg71@gmail.com
+Project-Name: Virtual Piano-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">  
+
+ 
+  <style>
+            *{
+                position:-webkit-sticky;
+                margin: 0;
+                padding: 0;
+                box-sizing:border-box;
+            }
+            
+            
+            
+            .heading>h2{
+            
+                align: center;  
+                box-sizing: border-box;
+                padding:5px;
+                width:41%;
+                margin:18px;
+                margin-bottom:3.5% ;
+                color: #ff7300;
+                text-shadow:#0b0c02 1px 1px 3px;
+                border :0.01rem dotted white;
+                font-size:2.2rem;
+                font-family: 'Brush Script MT';  
+            }
+            
+            h2:hover {
+            box-shadow: 3px 3px 8px #b1b1b1,-3px -3px 8px #ffffff;  
+            color: #00e1ff;
+            }
+            
+            
+            .caps>h4{
+            color:#ffffff;
+            font-size:1.2rem;
+            padding:2px;
+            margin-top: 1.4%;
+            text-shadow:#000000 1px 1px 5px;
+            
+            }
+            
+            .piano{
+            
+                position:relative;
+                display : flex;
+                background-image:linear-gradient(#000000, #1d1c1c);
+                border: 4px inset #f3f3f3;
+                background-clip: padding-box;
+                margin-top: 20px;
+                margin-left: 10%;
+                height: 45vh;
+                width: 80%;
+                border-radius:35px;
+                box-shadow: #fdfeff 6px 10px;
+                justify-content: center;
+            }
+            
+            .key {
+                
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                font-size: 1.2rem;
+                font-weight: bold;
+                padding-bottom: 1.3rem;
+            }
+            
+            .white {
+                position: relative;
+                width: 9%;
+                min-width: 10px;
+                min-height: 50%;
+                margin-top: 2%;
+                height: 86%;
+                background-color: #ffffff;
+                border: 1.5px solid #000000;
+                color: #000;
+                box-shadow: #062e57 5px 10px;
+                border-radius: 0px 00px 0px 40px ;
+                cursor:pointer;
+            }
+            
+            .black {
+                position: relative;
+                margin-top:2%;
+                width: 8%;
+                height: 45%;
+                margin-left: -4%;
+                margin-right: -4%;
+                z-index: 2 ;
+                background-color: #000000;
+                border: 1.5px solid #000000;
+                box-shadow: #35516d 5px 10px 0px;
+                border-radius: 0px 40px 0px 40px ;
+                color:#ffffff;
+                cursor:pointer;
+            }
+            
+            .black:hover {
+                box-shadow: 3px 3px 8px #ff290d;  
+                color: #ff0000;  
+            }
+            
+            .white:hover {
+                box-shadow: 3px 3px 8px #ffe600;  
+                color: #f7f200;
+            }
+            
+            
+            .color>button{  
+                cursor:pointer;
+                margin-top:18px;
+                margin-left: 2%;
+                padding: 0.8%;
+                text-align: center;
+                color:#FDDC22;
+                border-radius: 0px 15px 0px 15px;
+                border: 5px inset #FB8604;
+                font-size: 1.2rem;
+                font-weight: bold;
+                background-color:  #000000;
+                transition: 0.1s; 
+            }
+            
+            
+            button:hover {
+                box-shadow: 3px 3px 8px #b1b1b1,-3px -3px 8px #ffffff;  
+                color: #ffffff;
+            }
+            
+            
+            
+            marquee {
+                color:#F7D4DC;
+                font-size:1.1rem;
+                padding:10px;
+                margin-top: 15px;
+                text-shadow:#ff6600 1px 1px 5px; 
+            }
+            
+            .block:hover {
+            box-shadow: 3px 3px 8px #b1b1b1,-3px -3px 8px #ffffff;  
+            color: rgb(255, 255, 255);
+            }
+            
+            .block{
+                background-color:#210934;
+                margin-left:10%;
+                margin-top:5.2rem;
+                margin-bottom: 1.0rem;
+                width: 80%;
+                min-width: 50px;
+                min-height: 50px;
+            
+            }
+            
+            
+            .container-fluid{
+            min-width: 100%;
+            min-height: 100%;
+                height: 54%;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            
+            }
+            
+            body{
+                justify-content: center;
+                /* background  */
+                background: linear-gradient(132deg, #FC415A, #591BC5, #212335 );
+                background-size: 300% 300%;
+                animation: Gradient 10s ease infinite;
+                position: relative;
+                padding:0%;
+                margin:0px;
+            
+            }
+            
+            
+            /* Animate Background*/
+            @keyframes Gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+            }
+            
+            .cube,:hover {
+            box-shadow: 1px 1px 10px #ffe600;  
+            color: rgb(247, 242, 0);
+            }
+            
+            
+            .cube {
+            position: absolute;
+            top: 78vh;
+            left: 89vw;
+            width: 10px;
+            height: 10px;
+            border: solid 1px #D7D4E4;
+            transform-origin: top left;
+            transform: scale(0) rotate(0deg) translate(-50%, -50%);
+            animation: cube 12s ease-in forwards infinite;
+            
+            }
+            
+            
+            .cube:nth-child(2) {
+            animation-delay: 4s;
+            left: 10vw;
+            top: 6vh;
+            }
+            .cube:nth-child(3) {
+            animation-delay: 6s;
+            left: 85vw;
+            top: 8vh;
+            }
+            .cube:nth-child(4) {
+            animation-delay: 8s;
+            left: 9vw;
+            top: 78vh;
+            }
+            
+            
+            @keyframes cube {
+            from {
+                transform: scale(0) rotate(0deg) translate(-50%, -50%);
+                opacity: 1;
+            }
+            to {
+                transform: scale(20) rotate(960deg) translate(-50%, -50%);
+                opacity: 0;
+            }
+            }
+
+
+  </style>
+   
+<title>V PIANO</title>
+
+</head> 
+
+<body> 
+ 
+      <div align="center" class="heading">
+      <h2> VIRTUAL PIANO KEYBOARD</h2>
+      </div>
+
+      <div  align="center" class="caps">
+        <h4>Keep Caps Lock OFF to play by  keyboard</h4>
+        </div>
+
+	<div class="piano"> 
+		<div class="key white" data-note="C">Q</div> 
+		<div class="key black" data-note="Cs">A</div> 
+		<div class="key white" data-note="D">W</div> 
+		<div class="key black" data-note="Ds">S</div> 
+		<div class="key white" data-note="E">E</div> 
+		<div class="key white" data-note="F">R</div> 
+		<div class="key black" data-note="Fs">D</div> 
+		<div class="key white" data-note="G">T</div> 
+		<div class="key black" data-note="Gs">F</div> 
+		<div class="key white" data-note="A">Y</div> 
+		<div class="key black" data-note="Bb">G</div> 
+		<div class="key white" data-note="B">U</div>    
+    <div class="key white" data-note="C1">I</div> 
+    <div class="key black" data-note="Cs1">H</div> 
+    <div class="key white" data-note="D1">O</div> 
+		<div class="key black" data-note="Ds1">J</div> 
+    <div class="key white" data-note="E1">P</div> 
+    </div>
+
+    <div>
+        <audio src="C.mp3" id="C">Q</audio>
+        <audio src="Cs.mp3" id="Cs">A</audio>
+        <audio src="D.mp3" id="D">W</audio>
+        <audio src="Ds.mp3" id="Ds">S</audio>
+        <audio src="E.mp3" id="E">E</audio>
+        <audio src="F.mp3" id="F">R</audio>
+        <audio src="Fs.mp3" id="Fs">D</audio>
+        <audio src="G.mp3" id="G">T</audio>
+        <audio src="Gs.mp3" id="Gs">F</audio>
+        <audio src="A.mp3" id="A">Y</audio>
+        <audio src="Bb.mp3" id="Bb">G</audio>
+        <audio src="B.mp3" id="B">U</audio>
+        <audio src="C1.mp3" id="C1">I</audio>
+        <audio src="Cs1.mp3" id="Cs1">H</audio>
+        <audio src="D1.mp3" id="D1">O</audio>
+        <audio src="Ds1.mp3" id="Ds1">J</audio>
+        <audio src="E1.mp3" id="E1">P</audio>
+    </div>
+
+<div class="container-fluid">
+              <!-- Background animtion-->
+          <div id="cubes">
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            <div class="cube"></div>
+            
+          </div>
+
+
+          <div class="block" align="center">
+                <!-- <p> buttons for Change piano Color</p>-->
+                <div class="color" >
+                  <button type="input"
+                  onclick="color()">Color</button>
+                  <button type="reset"
+                  onclick="reset()">Reset</button>
+                </div>  <b></b>
+            
+
+            <marquee direction="left">
+              Click on above Buttons to Change and Reset the Theme of Piano
+            </marquee>
+          </div>
+
+   </div>
+
+
+      <script>
+        const keys = document.querySelectorAll('.key');
+        const regulars = document.querySelectorAll('.key.white');
+        const sharps = document.querySelectorAll('.key.black');
+        const whites = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+        const blacks = [ 'a', 's', 'd', 'f', 'g', 'h', 'j'];
+        
+        
+        keys.forEach(key => {
+            key.addEventListener('click', () => playNote(key));
+        })
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.repeat) return
+            const key = e.key
+            const whiteKeyIndex = whites.indexOf(key);
+            const blackKeyIndex = blacks.indexOf(key);
+        
+            if (whiteKeyIndex > -1) playNote(regulars[whiteKeyIndex]);
+            if (blackKeyIndex > -1) playNote(sharps[blackKeyIndex]);
+        });
+        
+        
+        let playNote = (key) => {
+            const noteSound = document.getElementById(key.dataset.note);
+            noteSound.currentTime = 0
+            noteSound.play()
+           
+        }
+        
+              function color()
+              {
+        
+                var w_buttons = document.getElementsByClassName('white'); 
+                var b_buttons = document.getElementsByClassName('black');
+          
+                //For Changing Colors
+                    
+                        var r = Math.floor(Math.random()*256); 	
+                        var g = Math.floor(Math.random()*256); 		
+                        var b = Math.floor(Math.random()*256); 	
+                        var white_key_color= "rgb(" + b + "," + g + "," + r + ")"; 	
+                        r = Math.floor(Math.random()*256); 	
+                        g = Math.floor(Math.random()*256); 
+                        b = Math.floor(Math.random()*256); 		 	
+                        var black_key_color = "rgb(" + g + "," + r + "," + b + ")"; 
+                        r = Math.floor(Math.random()*256); 	
+                        g = Math.floor(Math.random()*256); 
+                        b = Math.floor(Math.random()*256); 	 
+                        var white_key_border = "rgb(" + b + "," + g + "," + r + ")"; 	
+                        r = Math.floor(Math.random()*256); 	
+                        g = Math.floor(Math.random()*256); 
+                        b = Math.floor(Math.random()*256); 		 	
+                        var black_key_border = "rgb(" + g + "," + r + "," + b + ")"; 	
+                        
+                  
+                        for(let i = 0;i<w_buttons.length;i++)
+                        { 		
+                            w_buttons[i].style.backgroundColor = white_key_color; 
+                            w_buttons[i].style.borderColor = white_key_border ; 
+                            w_buttons[i].style.color = white_key_border ; 
+                           
+                        } 	
+                        for(let i = 0;i<b_buttons.length;i++)
+                        { 		
+                            b_buttons[i].style.backgroundColor = black_key_color; 
+                            b_buttons[i].style.borderColor =  black_key_border ;
+                            b_buttons[i].style.color = black_key_border ;  
+                                 
+                        } 
+              }
+        
+            function reset()
+            {
+                var w_buttons = document.getElementsByClassName('white'); 
+                var b_buttons = document.getElementsByClassName('black');
+        
+                  //For Reset the colors
+        
+                      for(let i = 0;i<w_buttons.length;i++)
+                      { 	
+                        w_buttons[i].style.backgroundColor = "white"; 	
+                        w_buttons[i].style.borderColor = "black"; 
+                        w_buttons[i].style.color = "black" ;	
+                       
+                      } 		
+                      for(let i = 0;i<b_buttons.length;i++)
+                      { 
+                        b_buttons[i].style.backgroundColor = "black"; 	
+                        b_buttons[i].style.borderColor = "black"; 
+                        b_buttons[i].style.color = "white" ;
+                      } 
+             }
+        
+           </script>
+
+</body> 
+</html>
